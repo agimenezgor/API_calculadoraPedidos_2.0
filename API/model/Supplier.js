@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const SupplierSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     name: {
         type: String,
         required: [true, 'El nombre es necesario']
@@ -11,27 +15,27 @@ const SupplierSchema = new mongoose.Schema({
         unique: true
     },
     days: {
-        type: number,
+        type: Number,
         required: [true, 'La cantidad de días que tardan en servir es necesaria'],
     },
     money: {
-        type: number,
+        type: Number,
         default: 0
     },
     minPalets: {
-        type: number,
+        type: Number,
         default: 0
     },
     maxPalets: {
-        type: number,
+        type: Number,
         default: 0
     },
     minKilos: {
-        type: number,
+        type: Number,
         default: 0
     },
     maxKilos: {
-        type: number,
+        type: Number,
         default: 0
     }
 });

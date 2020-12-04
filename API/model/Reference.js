@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const ReferenceSchema = new mongoose.Schema({
+    supplier: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Supplier'
+    },
     name: {
         type: String,
         required: [true, 'El nombre es necesario']
