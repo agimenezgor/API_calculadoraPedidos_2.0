@@ -54,28 +54,19 @@ const UserController = {
             if(!user){
                 res.send({message: 'El usuario no existe en la base de datos'});
             }else {
-                /* const isMatch = await user.isValidPassword(req.body.password);
+                const isMatch = await user.isValidPassword(req.body.password);
                 if(!isMatch){
                     res.send({message: 'La contraseña es incorrecta'});
                 }else{
                     payload = {
                         email: user.email,
                     }
-                    jwt.sign(payload, CONFIG.SECRET_TOKEN, function(error, token){
+                    jwt.sign(payload, CONFIG.TOKEN_SECRET, function(error, token){
                         if(error){
                             res.status(500).send({error})
                         }res.send({message: 'Sesión iniciada correctamente', user, token});
                     }) 
-                } */
-                payload = {
-                    email: user.email,
                 }
-                jwt.sign(payload, CONFIG.TOKEN_SECRET, function(error, token){
-                    if(error){
-                        res.status(500).send({error})
-                    }
-                    res.send({message: 'Sesión iniciada correctamente', user, token});
-                })
             }    
         } catch (error) {
             console.error(error);
