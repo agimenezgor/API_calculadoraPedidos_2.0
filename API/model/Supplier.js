@@ -20,29 +20,49 @@ const SupplierSchema = new mongoose.Schema({
     },
     calculateType: {
         type: String,
-        default: "Palets"
+        default: "Palets",
+        enum: ["Palets", "Kilos", "Franco"]
     },
     money: {
         type: Number,
-        default: 0
+        required: elegibleMoney
     },
     minPalets: {
         type: Number,
-        default: 0
+        required: elegiblePalets
     },
     maxPalets: {
         type: Number,
-        default: 0
+        required: elegiblePalets
     },
     minKilos: {
         type: Number,
-        default: 0
+        required: elegibleKilos
     },
     maxKilos: {
         type: Number,
-        default: 0
+        required: elegibleKilos
     }
 });
+
+function elegiblePalets(){
+    if(this.calculateType === "Palets"){
+        return true;
+    }
+    return false;
+}
+function elegibleKilos(){
+    if(this.calculateType === "Kilos"){
+        return true;
+    }
+    return false;
+}
+function elegibleMoney(){
+    if(this.calculateType === "Franco"){
+        return true
+    }
+    return false;
+}
 
 const Supplier = mongoose.model('Supplier', SupplierSchema);
 module.exports = Supplier;
