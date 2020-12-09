@@ -18,6 +18,10 @@ const SupplierSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'La cantidad de días que tardan en servir es necesaria'],
     },
+    calculateType: {
+        type: String,
+        default: "Palets"
+    },
     money: {
         type: Number,
         default: 0
