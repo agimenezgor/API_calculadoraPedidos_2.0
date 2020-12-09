@@ -34,7 +34,9 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-
+app.use(express.json({
+  type: ['application/json', 'text/plain']
+}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
